@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="navbar grid grid-cols-4 place-items-center bg-white w-[80%] mx-auto mt-8 mb-10">
+    <div className=" bg-slate-200 rounded-lg navbar grid grid-cols-4 place-items-center  w-[80%] mx-auto mt-8 mb-10">
       <div className="col-span-1">
         <Link to="/" className="btn btn-ghost text-xl text-gray-500 font-medium">The Dragon News</Link>
       </div>
