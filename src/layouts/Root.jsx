@@ -5,10 +5,6 @@ import Footer from './Footer/Footer';
 import LeftSNav from './LeftSNav/LeftSNav';
 import RightNav from './RightNav/RightNav';
 
-
-
-
-
 const Root = () => {
     return (
         <div>
@@ -18,7 +14,7 @@ const Root = () => {
                    <LeftSNav></LeftSNav>
                 </div>
                 <div className='col-span-6'>
-                    Main Content coming here....
+                    <Outlet></Outlet>
                 </div>
                 <div className='col-span-3'>
                     <RightNav></RightNav>

@@ -15,11 +15,16 @@ const LeftSNav = () => {
         <h4 className="text-2xl text-gray-700 font-semibold">All Category</h4>
         <div className=" ps-5 mt-5 text-gray-500 text-2xl">
           {categories.map((category) => (
-            <p key={category.id}>
+            <div key={category.id}>
               <div className="mt-8 pt-5 font-semibold">
-               <Link to={`/category/${category.id}`} className="p-4 hover:bg-slate-200 rounded-lg hover:text-black">{category.name}</Link>
+                <Link
+                  to={`/category/${category.id}`}
+                  className="p-4 hover:bg-slate-200 rounded-lg hover:text-black"
+                >
+                  {category.name}
+                </Link>
               </div>
-            </p>
+            </div>
           ))}
         </div>
       </div>

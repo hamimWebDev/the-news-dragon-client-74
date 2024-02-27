@@ -6,6 +6,9 @@ import Root from "./layouts/Root";
 import Home from "./layouts/Home/Home";
 import Login from "./layouts/Login/Login";
 import SignUpPage from "./layouts/SignUp/SignUpPage";
+import Category from "./layouts/Home/Category";
+import NewsLayout from "./layouts/News/NewsLayout/NewsLayout";
+import News from "./layouts/News/News";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,10 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/category/:id",
+        element: <Category></Category>,
+      },
+      {
         path: "/Login",
         element: <Login></Login>,
       },
@@ -26,6 +33,16 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: 'News',
+    element: <NewsLayout></NewsLayout>,
+    children: [
+      {
+        path: ":id",
+        element: <News></News>
+      }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
