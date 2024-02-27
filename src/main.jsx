@@ -22,6 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/category/:id",
         element: <Category></Category>,
+        loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
       },
       {
         path: "/Login",
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         element: <News></News>
       }
     ]
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
