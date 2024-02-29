@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProviders";
 
 function SignUpPage() {
+  const { createUser } = useContext(AuthContext);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -42,16 +45,20 @@ function SignUpPage() {
       alert("Confirm Password do not match");
       return;
     }
-    console.log(firstName, lastName, email, password, confirmPassword);
-
-    console.log(typeof email);
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (

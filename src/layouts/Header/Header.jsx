@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div>
+    <div className="mb-8">
       <div className="text-center ">
         <p className="flex justify-center pt-5">
           <img src={logo} alt="" />
@@ -25,7 +25,6 @@ const Header = () => {
           Highlights: Germany vs Spain as...
         </Marquee>
       </div>
-      
     </div>
   );
 };

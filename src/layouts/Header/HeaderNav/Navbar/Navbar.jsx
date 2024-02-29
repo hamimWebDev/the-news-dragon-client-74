@@ -3,9 +3,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut(() => {}).catch((error) => {
+      console.error(error);
+    });
+  };
   return (
-    <div className=" bg-slate-200 rounded-lg navbar grid grid-cols-4 place-items-center  w-[80%] mx-auto mt-8 mb-10">
+    <div className=" bg-slate-200 rounded-lg navbar grid grid-cols-4 place-items-center  w-[80%] mx-auto mt-5 mb-10">
       <div className="col-span-1">
         <Link
           to="/category/0"
@@ -35,7 +40,10 @@ const Navbar = () => {
         </div>
         {user ? (
           <Link>
-            <button className=" bg-slate-700 font-semibold text-xl text-white p-2 w-28 ml-2">
+            <button
+              onClick={handleLogout}
+              className=" bg-slate-700 font-semibold text-xl text-white p-2 w-28 ml-2"
+            >
               Logout
             </button>
           </Link>
