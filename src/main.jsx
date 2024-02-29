@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./layouts/Root";
 import Home from "./layouts/Home/Home";
@@ -10,22 +10,16 @@ import Category from "./layouts/Home/Category";
 import NewsLayout from "./layouts/News/NewsLayout/NewsLayout";
 import News from "./layouts/News/News";
 import AuthProviders from "./layouts/providers/AuthProviders";
+import LoginLayout from "./layouts/Login/LoginLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>,
+    element: <LoginLayout></LoginLayout>,
     children: [
       {
         path: "/",
-        element: <Category></Category>,
-        loader: () => fetch("http://localhost:5000/news"),
-      },
-      {
-        path: "/category/:id",
-        element: <Category></Category>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/categories/${params.id}`),
+        element: <Navigate to="/category/0"></Navigate>
       },
       {
         path: "/Login",
@@ -35,6 +29,19 @@ const router = createBrowserRouter([
         path: "/SignUp",
         element: <SignUpPage></SignUpPage>,
       },
+    ]
+  },
+  {
+    path: "category",
+    element: <Root></Root>,
+    children: [
+      {
+        path: ":id",
+        element: <Category></Category>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/categories/${params.id}`),
+      },
+      
     ],
   },
   {

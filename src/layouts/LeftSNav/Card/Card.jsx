@@ -7,6 +7,7 @@ import third from '../../../assets/3.png';
 const Card = () => {
   return (
     <div className="mt-10">
+      
       <div className="flex justify-center mt-5">
         <div className="w-[80%] rounded shadow-lg mb-5 ">
           <img

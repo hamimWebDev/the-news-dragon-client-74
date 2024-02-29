@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 import moment from "moment";
 import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
-import Navbar from "./HeaderNav/Navbar/Navbar";
+
 
 const Header = () => {
   return (
@@ -25,7 +25,7 @@ const Header = () => {
           Highlights: Germany vs Spain as...
         </Marquee>
       </div>
-      <Navbar></Navbar>
+      
     </div>
   );
 };
