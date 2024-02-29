@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProviders";
 
 function Login() {
+  const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -24,11 +28,18 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = formData;
-    console.log(email, password);
-    setFormData({
-      email: "",
-      password: "",
-    });
+    signInUser(email, password)
+      .then((result) => {
+        const loginUser = result.user;
+        setFormData({
+          email: "",
+          password: "",
+        });
+        navigate("/category/0")
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
