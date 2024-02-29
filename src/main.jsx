@@ -1,6 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import "./index.css";
 import Root from "./layouts/Root";
 import Home from "./layouts/Home/Home";
@@ -11,6 +15,7 @@ import NewsLayout from "./layouts/News/NewsLayout/NewsLayout";
 import News from "./layouts/News/News";
 import AuthProviders from "./layouts/providers/AuthProviders";
 import LoginLayout from "./layouts/Login/LoginLayout";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Navigate to="/category/0"></Navigate>
+        element: <Navigate to="/category/0"></Navigate>,
       },
       {
         path: "/Login",
@@ -29,7 +34,7 @@ const router = createBrowserRouter([
         path: "/SignUp",
         element: <SignUpPage></SignUpPage>,
       },
-    ]
+    ],
   },
   {
     path: "category",
@@ -41,7 +46,6 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/categories/${params.id}`),
       },
-      
     ],
   },
   {
@@ -50,7 +54,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: ":id",
-        element: <News></News>,
+        element: (
+          <PrivateRoute>
+            <News></News>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/news/${params.id}`),
       },
