@@ -20,7 +20,6 @@ const Root = () => {
                     <RightNav></RightNav>
                 </div>
             </div>
-            <Outlet></Outlet>
             <div>
                 <Footer></Footer>
             </div>
