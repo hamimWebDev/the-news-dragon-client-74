@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { FaEye, FaRegBookmark, FaRegStar, FaStar } from "react-icons/fa";
 import { GrShareOption } from "react-icons/gr";
 import moment from "moment";
-import Rating from "react-rating";
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
+
 
 const NewsCard = ({ news }) => {
   const {
@@ -60,14 +62,7 @@ const NewsCard = ({ news }) => {
           </div>
           <div className="px-6 py-4 border-gray-300 border-t-2 flex justify-between items-center">
             <div className="flex items-center">
-              <Rating
-                className="text-orange-400 text-lg font-medium mr-2"
-                readonly
-                placeholderRating={rating?.number}
-                emptySymbol={<FaRegStar></FaRegStar>}
-                placeholderSymbol={<FaStar></FaStar>}
-                fullSymbol={<FaStar></FaStar>}
-              />
+            <Rating className="mr-2" style={{ maxWidth: 130 }} value={rating?.number} readOnly/>
               <h1 className="text-gray-500">{rating?.number}</h1>
             </div>
             <div className="flex items-center text-gray-500 text-xl">

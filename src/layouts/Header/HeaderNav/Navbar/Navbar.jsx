@@ -39,7 +39,7 @@ const Navbar = () => {
           )}
         </div>
         {user ? (
-          <Link>
+          <Link to="/category/0">
             <button
               onClick={handleLogout}
               className=" bg-slate-700 font-semibold text-xl text-white p-2 w-28 ml-2"

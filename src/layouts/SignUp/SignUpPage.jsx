@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
 
 function SignUpPage() {
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/category/0";
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -55,7 +58,7 @@ function SignUpPage() {
           password: "",
           confirmPassword: "",
         });
-        navigate("/category/0")
+        navigate(from, {replace: true});
       })
       .catch((error) => {
         console.error(error);

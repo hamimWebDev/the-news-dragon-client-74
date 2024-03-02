@@ -7,7 +7,6 @@ function Login() {
   const { signInUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
   const from = location.state?.from?.pathname || "/category/0";  
 
   const [formData, setFormData] = useState({
