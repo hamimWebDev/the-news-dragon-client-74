@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         element: <Category></Category>,
         loader: ({ params }) =>
           fetch(
-            `https://cors-problem-solve.vercel.app/categories/${params.id}`
+            `https://dragon-news-server-tau-hazel.vercel.app/categories/${params.id}`
           ),
       },
     ],
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `  https://cors-problem-solve.vercel.app/news/${params.id}`
+            `  https://dragon-news-server-tau-hazel.vercel.app/news/${params.id}`
           ),
       },
     ],

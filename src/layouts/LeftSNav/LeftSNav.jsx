@@ -5,7 +5,7 @@ import Card from "./Card/Card";
 const LeftSNav = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    fetch("  https://cors-problem-solve.vercel.app/categories")
+    fetch("https://dragon-news-server-tau-hazel.vercel.app/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data))
       .catch((error) => console.error(error));
